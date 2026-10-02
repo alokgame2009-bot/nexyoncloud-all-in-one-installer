@@ -21,7 +21,7 @@ BOLD='\033[1m'
 # ==============================
 printf '%b' "${BLUE}${BOLD}"
 cat <<'EOF'
-          _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____
+ _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____
  | \ | |  ____\ \ / /\ \   / / __ \| \ | |  / ____| |    / __ \| |  | |  __ \
  |  \| | |__   \ V /  \ \_/ / |  | |  \| | | |    | |   | |  | | |  | | |  | |
  | . ` |  __|   > <    \   /| |  | | . ` | | |    | |   | |  | | |  | | |  | |
@@ -33,36 +33,36 @@ printf '%b\n' "${RESET}"
 # ==============================
 # TITLE
 # ==============================
-printf '%b\n' "${WHITE}${BOLD}                         P A N E L   ${BLUE}I N S T A L L E R${RESET}"
+printf '%b\n' "${WHITE}${BOLD}                 P A N E L  ${BLUE}I N S T A L L E R${RESET}"
 
-printf '%b\n' "${WHITE}${BOLD}                           Power by ${PURPLE}NexyonCloud${RESET}"
+printf '%b\n' "${WHITE}${BOLD}                    Power by ${PURPLE}NexyonCloud${RESET}"
 
-printf '%b\n\n' "${WHITE}${BOLD}                              Made by ${GREEN}Hiro${RESET}"
+printf '%b\n\n' "${WHITE}${BOLD}                      Made by ${GREEN}Hiro${RESET}"
 
 # ==============================
 # MENU HEADER
 # ==============================
-printf '%b\n' "${LIGHT_BLUE}${BOLD}            ╭──────────────────────────────────╮${RESET}"
-printf '%b\n' "${LIGHT_BLUE}${BOLD}            │       NEXYONCLOUD INSTALLER      │${RESET}"
-printf '%b\n' "${LIGHT_BLUE}${BOLD}            ╰──────────────────────────────────╯${RESET}"
+printf '%b\n' "${LIGHT_BLUE}${BOLD}       ╭──────────────────────────────────╮${RESET}"
+printf '%b\n' "${LIGHT_BLUE}${BOLD}       │       NEXYONCLOUD INSTALLER      │${RESET}"
+printf '%b\n' "${LIGHT_BLUE}${BOLD}       ╰──────────────────────────────────╯${RESET}"
 
 printf '\n'
 
 # ==============================
 # MENU OPTIONS
 # ==============================
-printf '%b\n' "        ${WHITE}${BOLD}[1]${RESET}  ${CYAN}${BOLD}➜  Panel Installer${RESET}"
-printf '%b\n' "        ${WHITE}${BOLD}[2]${RESET}  ${CYAN}${BOLD}➜  Wings Installer${RESET}"
-printf '%b\n' "        ${WHITE}${BOLD}[3]${RESET}  ${CYAN}${BOLD}➜  Theme Installer${RESET}"
-printf '%b\n' "        ${WHITE}${BOLD}[4]${RESET}  ${CYAN}${BOLD}➜  Extensions${RESET}"
-printf '%b\n' "        ${WHITE}${BOLD}[5]${RESET}  ${CYAN}${BOLD}➜  Uninstall${RESET}"
+printf '%b\n' "    ${WHITE}${BOLD}[1]${RESET}  ${CYAN}${BOLD}➜  Panel Installer${RESET}"
+printf '%b\n' "    ${WHITE}${BOLD}[2]${RESET}  ${CYAN}${BOLD}➜  Wings Installer${RESET}"
+printf '%b\n' "    ${WHITE}${BOLD}[3]${RESET}  ${CYAN}${BOLD}➜  Theme Installer${RESET}"
+printf '%b\n' "    ${WHITE}${BOLD}[4]${RESET}  ${CYAN}${BOLD}➜  Extensions${RESET}"
+printf '%b\n' "    ${WHITE}${BOLD}[5]${RESET}  ${CYAN}${BOLD}➜  Uninstall${RESET}"
 
 printf '\n'
 
 # ==============================
 # EXIT
 # ==============================
-printf '%b\n' "        ${RED}${BOLD}[0]  ➜  Exit${RESET}"
+printf '%b\n' "    ${RED}${BOLD}[0]  ➜  Exit${RESET}"
 
 printf '\n'
 
@@ -76,7 +76,7 @@ printf '\n'
 # ==============================
 # PROMPT
 # ==============================
-printf '%b' "${YELLOW}${BOLD}        ❯ Select an option [0-5]: ${RESET}"
+printf '%b' "${YELLOW}${BOLD}     ❯ Select an option [0-5]: ${RESET}"
 read -r choice
 
 case "$choice" in
