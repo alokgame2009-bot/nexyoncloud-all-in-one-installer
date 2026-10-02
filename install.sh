@@ -22,124 +22,129 @@ BOLD='\033[1m'
 TERM_WIDTH=$(tput cols 2>/dev/null || echo 80)
 
 # ==============================
-# CENTER FUNCTION
+# CENTER PLAIN TEXT
 # ==============================
-center_text() {
+center_plain() {
     local text="$1"
-    local width="$2"
+    local length=${#text}
 
-    if [ "$width" -gt "$TERM_WIDTH" ]; then
-        width="$TERM_WIDTH"
-    fi
+    local padding=$(( (TERM_WIDTH - length) / 2 ))
 
-    local padding=$(( (TERM_WIDTH - width) / 2 ))
+    [ "$padding" -lt 0 ] && padding=0
 
     printf "%*s%s\n" "$padding" "" "$text"
 }
 
 # ==============================
+# CENTER COLORED TEXT
+# ==============================
+center_colored() {
+    local color="$1"
+    local text="$2"
+
+    local length=${#text}
+    local padding=$(( (TERM_WIDTH - length) / 2 ))
+
+    [ "$padding" -lt 0 ] && padding=0
+
+    printf '%b%*s%s%b\n' \
+        "$color" \
+        "$padding" "" \
+        "$text" \
+        "$RESET"
+}
+
+# ==============================
 # LOGO
 # ==============================
-LOGO='
- _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____
-| \ | |  ____\ \ / /\ \   / / __ \| \ | |  / ____| |    / __ \| |  | |  __ \
-|  \| | |__   \ V /  \ \_/ / |  | |  \| | | |    | |   | |  | | |  | | |  | |
-| . ` |  __|   > <    \   /| |  | | . ` | | |    | |   | |  | | |  | | |  | |
-| |\  | |____ / . \    | | | |__| | |\  | | |____| |___| |__| | |__| | |__| |
-|_| \_|______/_/ \_\   |_|  \____/|_| \_|  \_____|______\____/ \____/|_____/
-'
+LOGO=(
+' _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____'
+'| \ | |  ____\ \ / /\ \   / / __ \| \ | |  / ____| |    / __ \| |  | |  __ \'
+'|  \| | |__   \ V /  \ \_/ / |  | |  \| | | |    | |   | |  | | |  | | |  | |'
+'| . ` |  __|   > <    \   /| |  | | . ` | | |    | |   | |  | | |  | | |  | |'
+'| |\  | |____ / . \    | | | |__| | |\  | | |____| |___| |__| | |__| | |__| |'
+'|_| \_|______/_/ \_\   |_|  \____/|_| \_|  \_____|______\____/ \____/|_____|'
+)
 
+# ==============================
+# PRINT LOGO
+# ==============================
 printf '%b' "${BLUE}${BOLD}"
 
-while IFS= read -r line; do
-    center_text "$line" 78
-done <<< "$LOGO"
+for line in "${LOGO[@]}"; do
+    center_plain "$line"
+done
 
 printf '%b\n' "${RESET}"
 
 # ==============================
 # TITLE
 # ==============================
-center_text "${WHITE}${BOLD}P A N E L   ${BLUE}I N S T A L L E R${RESET}" 50
+center_colored \
+    "${WHITE}${BOLD}" \
+    "P A N E L   I N S T A L L E R"
 
-center_text "${WHITE}${BOLD}Power by ${PURPLE}NexyonCloud${RESET}" 40
+center_colored \
+    "${WHITE}${BOLD}" \
+    "Power by NexyonCloud"
 
-center_text "${WHITE}${BOLD}Made by ${GREEN}Hiro${RESET}" 35
+center_colored \
+    "${WHITE}${BOLD}" \
+    "Made by Hiro"
 
 printf '\n'
 
 # ==============================
 # MENU BOX
 # ==============================
-BOX_WIDTH=42
-BOX_PADDING=$(( (TERM_WIDTH - BOX_WIDTH) / 2 ))
+BOX_TOP="╭──────────────────────────────────╮"
+BOX_TEXT="│       NEXYONCLOUD INSTALLER      │"
+BOX_BOTTOM="╰──────────────────────────────────╯"
 
-printf '%b%*s╭──────────────────────────────────────╮%b\n' \
-    "${LIGHT_BLUE}${BOLD}" "$BOX_PADDING" "" "${RESET}"
-
-printf '%b%*s│       NEXYONCLOUD INSTALLER         │%b\n' \
-    "${LIGHT_BLUE}${BOLD}" "$BOX_PADDING" "" "${RESET}"
-
-printf '%b%*s╰──────────────────────────────────────╯%b\n' \
-    "${LIGHT_BLUE}${BOLD}" "$BOX_PADDING" "" "${RESET}"
+center_colored "${LIGHT_BLUE}${BOLD}" "$BOX_TOP"
+center_colored "${LIGHT_BLUE}${BOLD}" "$BOX_TEXT"
+center_colored "${LIGHT_BLUE}${BOLD}" "$BOX_BOTTOM"
 
 printf '\n'
 
 # ==============================
 # MENU OPTIONS
 # ==============================
-MENU_PADDING=$(( (TERM_WIDTH - 38) / 2 ))
-
-printf '%b%*s%b[1]%b  ➜  Panel Installer%b\n' \
-    "${WHITE}${BOLD}" "$MENU_PADDING" "" \
-    "${WHITE}${BOLD}" "${CYAN}${BOLD}" "${RESET}"
-
-printf '%b%*s%b[2]%b  ➜  Wings Installer%b\n' \
-    "${WHITE}${BOLD}" "$MENU_PADDING" "" \
-    "${WHITE}${BOLD}" "${CYAN}${BOLD}" "${RESET}"
-
-printf '%b%*s%b[3]%b  ➜  Theme Installer%b\n' \
-    "${WHITE}${BOLD}" "$MENU_PADDING" "" \
-    "${WHITE}${BOLD}" "${CYAN}${BOLD}" "${RESET}"
-
-printf '%b%*s%b[4]%b  ➜  Extensions%b\n' \
-    "${WHITE}${BOLD}" "$MENU_PADDING" "" \
-    "${WHITE}${BOLD}" "${CYAN}${BOLD}" "${RESET}"
-
-printf '%b%*s%b[5]%b  ➜  Uninstall%b\n' \
-    "${WHITE}${BOLD}" "$MENU_PADDING" "" \
-    "${WHITE}${BOLD}" "${CYAN}${BOLD}" "${RESET}"
+center_colored "${CYAN}${BOLD}" "[1]  ➜  Panel Installer"
+center_colored "${CYAN}${BOLD}" "[2]  ➜  Wings Installer"
+center_colored "${CYAN}${BOLD}" "[3]  ➜  Theme Installer"
+center_colored "${CYAN}${BOLD}" "[4]  ➜  Extensions"
+center_colored "${CYAN}${BOLD}" "[5]  ➜  Uninstall"
 
 printf '\n'
 
 # ==============================
 # EXIT
 # ==============================
-printf '%b%*s%b[0]%b  ➜  Exit%b\n' \
-    "${RED}${BOLD}" "$MENU_PADDING" "" \
-    "${RED}${BOLD}" "${RED}${BOLD}" "${RESET}"
+center_colored "${RED}${BOLD}" "[0]  ➜  Exit"
 
 printf '\n'
 
 # ==============================
 # SEPARATOR
 # ==============================
-LINE_PADDING=$(( (TERM_WIDTH - 42) / 2 ))
+SEPARATOR="──────────────────────────────────────────"
 
-printf '%b%*s──────────────────────────────────────────%b\n' \
-    "${LIGHT_BLUE}${BOLD}" "$LINE_PADDING" "" "${RESET}"
+center_colored "${LIGHT_BLUE}${BOLD}" "$SEPARATOR"
 
 printf '\n'
 
 # ==============================
 # PROMPT
 # ==============================
-PROMPT='❯ Select an option [0-5]: '
+PROMPT="❯ Select an option [0-5]:"
 
 PROMPT_LENGTH=${#PROMPT}
 PROMPT_PADDING=$(( (TERM_WIDTH - PROMPT_LENGTH) / 2 ))
 
-printf '%b%*s%s%b' \
+[ "$PROMPT_PADDING" -lt 0 ] && PROMPT_PADDING=0
+
+printf '%b%*s%s %b' \
     "${YELLOW}${BOLD}" \
     "$PROMPT_PADDING" "" \
     "$PROMPT" \
@@ -153,34 +158,39 @@ read -r choice
 case "$choice" in
 
     1)
-        center_text "${CYAN}${BOLD}✓ Panel Installer selected${RESET}" 40
+        printf '\n'
+        center_colored "${CYAN}${BOLD}" "✓ Panel Installer selected"
         ;;
 
     2)
-        center_text "${CYAN}${BOLD}✓ Wings Installer selected${RESET}" 40
+        printf '\n'
+        center_colored "${CYAN}${BOLD}" "✓ Wings Installer selected"
         ;;
 
     3)
-        center_text "${CYAN}${BOLD}✓ Theme Installer selected${RESET}" 40
+        printf '\n'
+        center_colored "${CYAN}${BOLD}" "✓ Theme Installer selected"
         ;;
 
     4)
-        center_text "${CYAN}${BOLD}✓ Extensions selected${RESET}" 40
+        printf '\n'
+        center_colored "${CYAN}${BOLD}" "✓ Extensions selected"
         ;;
 
     5)
-        center_text "${CYAN}${BOLD}✓ Uninstall selected${RESET}" 40
+        printf '\n'
+        center_colored "${CYAN}${BOLD}" "✓ Uninstall selected"
         ;;
 
     0)
         printf '\n'
-        center_text "${RED}${BOLD}✓ Thanks for using NexyonCloud!${RESET}" 45
+        center_colored "${RED}${BOLD}" "✓ Thanks for using NexyonCloud!"
         exit 0
         ;;
 
     *)
         printf '\n'
-        center_text "${RED}${BOLD}✗ Invalid option!${RESET}" 35
+        center_colored "${RED}${BOLD}" "✗ Invalid option!"
         ;;
 
 esac
