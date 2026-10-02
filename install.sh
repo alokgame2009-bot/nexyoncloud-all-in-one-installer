@@ -3,13 +3,15 @@
 clear
 
 # ==============================
-# NexyonCloud All In One Installer
+# COLORS
 # ==============================
-
 BLUE='\033[1;34m'
+LIGHT_BLUE='\033[1;36m'
 CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
+PURPLE='\033[1;35m'
+GREEN='\033[1;32m'
 RED='\033[1;31m'
 RESET='\033[0m'
 BOLD='\033[1m'
@@ -17,91 +19,87 @@ BOLD='\033[1m'
 # ==============================
 # LOGO
 # ==============================
-
-printf '%b\n' "${BLUE}"
-printf '%s\n' \
-'  _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____' \
-' | \ | |  ____\ \ / /\ \   / / __ \| \ | |  / ____| |    / __ \| |  | |  __ \' \
-' |  \| | |__   \ V /  \ \_/ / |  | |  \| | | |    | |   | |  | | |  | | |  | |' \
-' | . ` |  __|   > <    \   /| |  | | . ` | | |    | |   | |  | | |  | |  | |' \
-' | |\  | |____ / . \    | | | |__| | |\  | | |____| |___| |__| | |__| | |__| |' \
-' |_| \_|______/_/ \_\   |_|  \____/|_| \_|  \_____|______\____/ \____/|_____/'
+printf '%b' "${BLUE}${BOLD}"
+cat <<'EOF'
+          _   _ ________   ____     ______  _   _    _____ _      ____  _    _ _____
+ | \ | |  ____\ \ / /\ \   / / __ \| \ | |  / ____| |    / __ \| |  | |  __ \
+ |  \| | |__   \ V /  \ \_/ / |  | |  \| | | |    | |   | |  | | |  | | |  | |
+ | . ` |  __|   > <    \   /| |  | | . ` | | |    | |   | |  | | |  | | |  | |
+ | |\  | |____ / . \    | | | |__| | |\  | | |____| |___| |__| | |__| | |__| |
+ |_| \_|______/_/ \_\   |_|  \____/|_| \_|  \_____|______\____/ \____/|_____/
+EOF
 printf '%b\n' "${RESET}"
 
 # ==============================
-# BRANDING
+# TITLE
 # ==============================
+printf '%b\n' "${WHITE}${BOLD}                         P A N E L   ${BLUE}I N S T A L L E R${RESET}"
 
-printf '%b\n' "${YELLOW}${BOLD}                         A L L   I N   O N E   I N S T A L L E R${RESET}"
-printf '%b\n' "${WHITE}                              Power by NexyonCloud${RESET}"
-printf '%b\n\n' "${BLUE}                                   Made by Hiro${RESET}"
+printf '%b\n' "${WHITE}${BOLD}                           Power by ${PURPLE}NexyonCloud${RESET}"
 
-# ==============================
-# HEADER
-# ==============================
-
-printf '%b\n' "${BLUE}╔════════════════════════════════════════════════════════════╗${RESET}"
-printf '%b\n' "${BLUE}║${RESET}                 ${WHITE}${BOLD}N E X Y O N C L O U D${RESET}                    ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}                 ${WHITE}${BOLD}A L L   I N   O N E${RESET}                      ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}                    ${WHITE}${BOLD}I N S T A L L E R${RESET}                     ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}╠════════════════════════════════════════════════════════════╣${RESET}"
+printf '%b\n\n' "${WHITE}${BOLD}                              Made by ${GREEN}Hiro${RESET}"
 
 # ==============================
-# MENU
+# MENU HEADER
 # ==============================
+printf '%b\n' "${LIGHT_BLUE}${BOLD}            ╭──────────────────────────────────╮${RESET}"
+printf '%b\n' "${LIGHT_BLUE}${BOLD}            │       NEXYONCLOUD INSTALLER      │${RESET}"
+printf '%b\n' "${LIGHT_BLUE}${BOLD}            ╰──────────────────────────────────╯${RESET}"
 
-printf '%b\n' "${BLUE}║${RESET}                                                            ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${CYAN}${BOLD}[ 1 ]  Panel Installer${RESET}                             ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${CYAN}${BOLD}[ 2 ]  Wings Installer${RESET}                             ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${CYAN}${BOLD}[ 3 ]  Theme Installer${RESET}                             ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${CYAN}${BOLD}[ 4 ]  Extensions${RESET}                                  ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${CYAN}${BOLD}[ 5 ]  Uninstall${RESET}                                   ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}                                                            ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}   ${RED}${BOLD}[ 6 ]  Exit${RESET}                                         ${BLUE}║${RESET}"
-printf '%b\n' "${BLUE}║${RESET}                                                            ${BLUE}║${RESET}"
-printf '%b\n\n' "${BLUE}╚════════════════════════════════════════════════════════════╝${RESET}"
+printf '\n'
 
 # ==============================
-# INPUT
+# MENU OPTIONS
 # ==============================
+printf '%b\n' "        ${WHITE}${BOLD}[1]${RESET}  ${CYAN}${BOLD}➜  Panel Installer${RESET}"
+printf '%b\n' "        ${WHITE}${BOLD}[2]${RESET}  ${CYAN}${BOLD}➜  Wings Installer${RESET}"
+printf '%b\n' "        ${WHITE}${BOLD}[3]${RESET}  ${CYAN}${BOLD}➜  Theme Installer${RESET}"
+printf '%b\n' "        ${WHITE}${BOLD}[4]${RESET}  ${CYAN}${BOLD}➜  Extensions${RESET}"
+printf '%b\n' "        ${WHITE}${BOLD}[5]${RESET}  ${CYAN}${BOLD}➜  Uninstall${RESET}"
 
-printf '%b' "${YELLOW}${BOLD}                 Select an option [1-6]: ${RESET}"
+printf '\n'
+
+# ==============================
+# EXIT
+# ==============================
+printf '%b\n' "        ${RED}${BOLD}[0]  ➜  Exit${RESET}"
+
+printf '\n'
+
+# ==============================
+# LINE
+# ==============================
+printf '%b\n' "${LIGHT_BLUE}${BOLD}        ─────────────────────────────────────────${RESET}"
+
+printf '\n'
+
+# ==============================
+# PROMPT
+# ==============================
+printf '%b' "${YELLOW}${BOLD}        ❯ Select an option [0-5]: ${RESET}"
 read -r choice
 
-# ==============================
-# OPTIONS
-# ==============================
-
 case "$choice" in
-
     1)
-        printf '%b\n' "${CYAN}${BOLD}[✓] Starting Panel Installer...${RESET}"
+        printf '\n%b\n' "${CYAN}${BOLD}        ✓ Panel Installer selected${RESET}"
         ;;
-
     2)
-        printf '%b\n' "${CYAN}${BOLD}[✓] Starting Wings Installer...${RESET}"
+        printf '\n%b\n' "${CYAN}${BOLD}        ✓ Wings Installer selected${RESET}"
         ;;
-
     3)
-        printf '%b\n' "${CYAN}${BOLD}[✓] Starting Theme Installer...${RESET}"
+        printf '\n%b\n' "${CYAN}${BOLD}        ✓ Theme Installer selected${RESET}"
         ;;
-
     4)
-        printf '%b\n' "${CYAN}${BOLD}[✓] Opening Extensions...${RESET}"
+        printf '\n%b\n' "${CYAN}${BOLD}        ✓ Extensions selected${RESET}"
         ;;
-
     5)
-        printf '%b\n' "${CYAN}${BOLD}[!] Starting Uninstall...${RESET}"
+        printf '\n%b\n' "${CYAN}${BOLD}        ✓ Uninstall selected${RESET}"
         ;;
-
-    6)
-        printf '%b\n' "${RED}${BOLD}[✓] Thanks for using NexyonCloud!${RESET}"
+    0)
+        printf '\n%b\n' "${RED}${BOLD}        ✓ Thanks for using NexyonCloud!${RESET}"
         exit 0
         ;;
-
     *)
-        printf '%b\n' "${RED}${BOLD}[✗] Invalid option!${RESET}"
-        exit 1
+        printf '\n%b\n' "${RED}${BOLD}        ✗ Invalid option!${RESET}"
         ;;
-
 esac
